@@ -5,6 +5,14 @@
   "version": "0.1.1",
   "publisher": "lucashuls",
   "license": "MIT",
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LucasHuls/svg-white-preview.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LucasHuls/svg-white-preview/issues"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
