@@ -1,0 +1,97 @@
+{
+  "name": "svg-white-preview",
+  "displayName": "SVG White Preview",
+  "description": "Opens .svg files on a white background by default, with a toggle for dark or checkerboard.",
+  "version": "0.1.1",
+  "publisher": "lucashuls",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Visualization"
+  ],
+  "keywords": [
+    "svg",
+    "preview",
+    "white background",
+    "dark theme"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "extensionKind": [
+    "workspace",
+    "ui"
+  ],
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "svgWhitePreview.editor",
+        "displayName": "SVG White Preview",
+        "selector": [
+          {
+            "filenamePattern": "*.svg"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "commands": [
+      {
+        "command": "svgWhitePreview.toggleBackground",
+        "title": "SVG Preview: Toggle Background",
+        "icon": "$(color-mode)"
+      },
+      {
+        "command": "svgWhitePreview.toggleZoom",
+        "title": "SVG Preview: Toggle Fit / 100%",
+        "icon": "$(zoom-in)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "svgWhitePreview.toggleBackground",
+          "when": "activeCustomEditorId == svgWhitePreview.editor",
+          "group": "navigation@1"
+        },
+        {
+          "command": "svgWhitePreview.toggleZoom",
+          "when": "activeCustomEditorId == svgWhitePreview.editor",
+          "group": "navigation@2"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "svgWhitePreview.toggleBackground",
+          "when": "activeCustomEditorId == svgWhitePreview.editor"
+        },
+        {
+          "command": "svgWhitePreview.toggleZoom",
+          "when": "activeCustomEditorId == svgWhitePreview.editor"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "SVG White Preview",
+      "properties": {
+        "svgWhitePreview.background": {
+          "type": "string",
+          "enum": [
+            "white",
+            "dark",
+            "checkerboard"
+          ],
+          "default": "white",
+          "description": "Background shown behind the SVG."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "package": "vsce package --allow-missing-repository"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.0.0"
+  }
+}
